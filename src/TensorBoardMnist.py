@@ -19,6 +19,9 @@ tf.name_scope to make a graph legible in the TensorBoard graph explorer, and of
 naming summary tags so that they are grouped meaningfully in TensorBoard.
 
 It demonstrates the functionality of every TensorBoard dashboard.
+
+Run: tensorboard --logdir /tmp/tensorflow/mnist/logs/mnist_with_summaries --port 8008
+In browser: http://localhost:8008
 """
 from __future__ import absolute_import
 from __future__ import division
@@ -50,6 +53,7 @@ def train():
         x = tf.placeholder(tf.float32, [None, 784], name='x-input')
         y_ = tf.placeholder(tf.int64, [None], name='y-input')
 
+    # Note: the reason for this: https://stackoverflow.com/questions/41778632
     with tf.name_scope('input_reshape'):
         image_shaped_input = tf.reshape(x, [-1, 28, 28, 1])
         tf.summary.image('input', image_shaped_input, 10)

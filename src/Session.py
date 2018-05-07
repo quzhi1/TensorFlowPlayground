@@ -14,7 +14,8 @@ Z = tf.matmul(X, W) + b
 
 # Open session
 sess = tf.Session()
-sess.run(W.initializer)  # Note, if initializer is not called, normal distribution won't happen
+# Note, if initializer is not called, normal distribution won't happen (You can use global initializer)
+sess.run(W.initializer)
 sess.run(Z, feed_dict={X: np.ones([2, 4])})
 
 # Explore operations
